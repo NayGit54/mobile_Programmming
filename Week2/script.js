@@ -1,5 +1,9 @@
-let a = Number(prompt("Enter the first number: "))
-let b = Number(prompt("Enter the second number:"))
-let c = a + b
+function add() {
+    let a = Number(document.getElementById("a").value);
+    let b = Number(document.getElementById("b").value);
 
-alert(c);
+    let c = a + b;
+
+    document.getElementById("c").innerHTML = "c = " + c;
+    console.log("a = " + a + ", b = " + b + ", c = " + c);
+}
