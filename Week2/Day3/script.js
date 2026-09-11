@@ -4,7 +4,6 @@ function calculate(operation) {
     let result;
     if (operation == 'add') {
         result = a + b;
-
     }
     else if (operation == 'sub') {
         result = a - b;
