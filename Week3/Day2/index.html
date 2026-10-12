@@ -4,12 +4,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week2 day 2</title>
+
+    <title>Interactive Student Profile Card Using jQuery</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- JavaScript Link -->
+
+    <h1>Interactive Student Profile Card</h1>
+
+    <!-- Student Profile -->
+    <div id="profile-card">
+
+        <img src="nayanpp.jpeg" alt="Student Profile Photo" id="profile-photo" width="150">
+
+        <h2 id="student-name">Nayan</h2>
+
+        <p id="student-bio">
+            I am a BSc IT student learning HTML, CSS, JavaScript, and jQuery.
+        </p>
+
+        <h3>My Skills</h3>
+
+        <ul id="skills-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>jQuery</li>
+        </ul>
+
+    </div>
+
+    <hr>
+
+    <!-- Input Section -->
+    <h2>Input Section</h2>
+
+    <input type="text" id="nickname-input" placeholder="Enter your nickname">
+
+    <hr>
+
+    <!-- GET and SET Methods -->
+    <h2>GET and SET Methods</h2>
+
+    <button id="show-name">Show Name</button>
+    <button id="change-name">Change Name</button>
+
+    <button id="show-bio">Show Bio</button>
+
+    <button id="get-input">Get Input</button>
+    <button id="set-input">Set Input</button>
+
+    <hr>
+
+    <!-- CSS Class Methods -->
+    <h2>CSS Class Methods</h2>
+
+    <button id="add-highlight">Add Highlight</button>
+    <button id="remove-highlight">Remove Highlight</button>
+
+    <button id="toggle-dark">Toggle Dark Mode</button>
+    <button id="toggle-rounded">Toggle Rounded Photo</button>
+
+    <hr>
+
+    <!-- CSS Method -->
+    <h2>CSS Method</h2>
+
+    <button id="change-bg">Change Background</button>
+    <button id="reset-bg">Reset Background</button>
+
+    <hr>
+
+    <!-- Hide and Show Methods -->
+    <h2>Hide and Show Methods</h2>
+
+    <button id="hide-photo">Hide Photo</button>
+    <button id="show-photo">Show Photo</button>
+
+    <button id="toggle-bio">Toggle Bio</button>
+
+    <hr>
+
+    <!-- Fade Effects -->
+    <h2>Fade Effects</h2>
+
+    <button id="fade-out">Fade Out Card</button>
+    <button id="fade-in">Fade In Card</button>
+    <button id="fade-half">Fade To 50%</button>
+
+    <hr>
+
+    <!-- Slide Effects -->
+    <h2>Slide Effects</h2>
+
+    <button id="slide-up">Slide Up Skills</button>
+    <button id="slide-down">Slide Down Skills</button>
+    <button id="slide-toggle">Toggle Skills</button>
+
+    <hr>
+
+    <!-- Animation -->
+    <h2>Animation</h2>
+
+    <button id="animate-card">Animate Card</button>
+
+    <hr>
+
+    <!-- Output Section -->
+    <h2>Output</h2>
+
+    <div id="output">
+        Your output will appear here.
+    </div>
+
+    <!-- jQuery must load before your JavaScript file -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
