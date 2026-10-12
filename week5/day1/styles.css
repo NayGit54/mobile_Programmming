@@ -1,0 +1,359 @@
+/* =========================
+   1. Global Styles
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --heading-color: #172554;
+    --text-color: #64748b;
+    --background-color: #f1f5f9;
+    --white: #ffffff;
+    --border-color: #dbe3ef;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background-color);
+    color: var(--heading-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+/* =========================
+   2. Main Contact Section
+========================= */
+
+.contact-section {
+    width: 100%;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.10);
+}
+
+/* =========================
+   3. Contact Information
+========================= */
+
+.contact-info {
+    background: linear-gradient(145deg, #1d4ed8, #2563eb);
+    color: var(--white);
+    padding: 55px 40px;
+}
+
+.contact-info h1 {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.info-description {
+    font-size: 15px;
+    color: #dbeafe;
+    margin-bottom: 45px;
+    max-width: 350px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 23px;
+}
+
+.info-item h3 {
+    font-size: 17px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.info-item p {
+    color: #dbeafe;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* =========================
+   4. Contact Form Container
+========================= */
+
+.contact-form-container {
+    padding: 50px 45px;
+}
+
+.contact-form-container h2 {
+    font-size: 30px;
+    color: var(--heading-color);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.form-description {
+    color: var(--text-color);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* =========================
+   5. Form Fields
+========================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    display: block;
+    width: 100%;
+    padding: 13px 15px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #0f172a;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.form-group input {
+    min-height: 48px;
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* Focus effect when the user clicks a field */
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+/* =========================
+   6. Submit Button
+========================= */
+
+#submitBtn {
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#submitBtn span {
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+#submitBtn:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+    transform: translateY(-1px);
+}
+
+#submitBtn:hover span {
+    transform: translateX(4px);
+}
+
+#submitBtn:active {
+    transform: translateY(0);
+}
+
+#submitBtn:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+/* Disabled state while Firebase is submitting */
+
+#submitBtn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================
+   7. Firebase Status Message
+========================= */
+
+#statusMessage {
+    margin-top: 18px;
+    padding: 0;
+    font-size: 14px;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+#statusMessage:empty {
+    display: none;
+}
+
+#statusMessage.success {
+    color: #15803d;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+#statusMessage.error {
+    color: #b91c1c;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+/* =========================
+   8. Tablet Layout
+========================= */
+
+@media (max-width: 850px) {
+    .contact-section {
+        grid-template-columns: 1fr 1.2fr;
+    }
+
+    .contact-info {
+        padding: 40px 25px;
+    }
+
+    .contact-info h1 {
+        font-size: 30px;
+    }
+
+    .contact-form-container {
+        padding: 40px 25px;
+    }
+}
+
+/* =========================
+   9. Mobile Layout
+========================= */
+
+@media (max-width: 650px) {
+    body {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .contact-section {
+        grid-template-columns: 1fr;
+        border-radius: 14px;
+    }
+
+    .contact-info {
+        padding: 35px 25px 20px;
+    }
+
+    .contact-info h1 {
+        font-size: 29px;
+    }
+
+    .info-description {
+        margin-bottom: 30px;
+    }
+
+    .info-item {
+        gap: 14px;
+        margin-bottom: 24px;
+    }
+
+    .info-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 20px;
+    }
+
+    .contact-form-container {
+        padding: 30px 22px;
+    }
+
+    .contact-form-container h2 {
+        font-size: 26px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+}
+
+/* =========================
+   10. Reduced Motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

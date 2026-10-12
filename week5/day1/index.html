@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <main class="contact-section">
+
+        <!-- Contact Information -->
+        <section class="contact-info">
+            <h1>Get in Touch</h1>
+
+            <p class="info-description">
+                Have a question or need help?
+                We'd love to hear from you.
+                Send us a message and we'll get back to you.
+            </p>
+
+            <div class="info-item">
+                <span class="info-icon" aria-hidden="true">&#9993;</span>
+                <div>
+                    <h3>Email Us</h3>
+                    <p>Send us your questions anytime.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon" aria-hidden="true">&#9742;</span>
+                <div>
+                    <h3>Call Us</h3>
+                    <p>Leave your phone number so we can contact you.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon" aria-hidden="true">&#10003;</span>
+                <div>
+                    <h3>We're Here to Help</h3>
+                    <p>Share your feedback, questions, or suggestions.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form-container">
+            <h2>Contact Us</h2>
+
+            <p class="form-description">
+                Fill out the form below.
+                Fields marked with * are required.
+            </p>
+
+            <form id="contactForm">
+
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="name"
+                        maxlength="100" required>
+                </div>
+
+                <!-- Email Address -->
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address"
+                        autocomplete="email" maxlength="254" required>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" autocomplete="tel"
+                        maxlength="30">
+                </div>
+
+                <!-- Message -->
+                <div class="form-group">
+                    <label for="message">Your Message *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="How can we help you?" maxlength="5000"
+                        required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn">
+                    Send Message
+                    <span aria-hidden="true">&rarr;</span>
+                </button>
+
+                <!-- Firebase Status Message -->
+                <p id="statusMessage" role="status" aria-live="polite"></p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <!-- JavaScript and Firebase -->
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
