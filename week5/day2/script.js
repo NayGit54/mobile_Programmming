@@ -1,0 +1,1 @@
+console.log("the sum :", 567 + 789);
