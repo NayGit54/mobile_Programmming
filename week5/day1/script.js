@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
@@ -9,10 +8,11 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAgEgbC5sKL49R1LyldJnonMOcPWz0NoGM",
     authDomain: "classmobileprogramming.firebaseapp.com",
+    // NEW: tells Firebase exactly which database to use (Singapore region)
+    databaseURL: "https://classmobileprogramming-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "classmobileprogramming",
     storageBucket: "classmobileprogramming.firebasestorage.app",
     messagingSenderId: "368375936937",
@@ -24,6 +24,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
+// NEW: stops waiting after a set time, so the button never gets stuck
+function withTimeout(promise, ms) {
+    let timerId;
+    const timeout = new Promise((_, reject) => {
+        timerId = setTimeout(() => reject(new Error("timeout")), ms);
+    });
+    return Promise.race([promise, timeout]).finally(() => clearTimeout(timerId));
+}
+
 // Get form elements
 const contactForm = document.getElementById("contactForm");
 const submitBtn = document.getElementById("submitBtn");
@@ -31,6 +40,9 @@ const statusMessage = document.getElementById("statusMessage");
 
 // Check that the form exists
 if (contactForm && submitBtn && statusMessage) {
+
+    // NEW: remember the button's original content (text + arrow)
+    const originalButtonHTML = submitBtn.innerHTML;
 
     contactForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -54,18 +66,24 @@ if (contactForm && submitBtn && statusMessage) {
         statusMessage.textContent = "";
 
         try {
-            // Create a new contact entry
+            // Create a new contact entry with a unique key
             const contactsRef = ref(db, "contacts");
             const newContactRef = push(contactsRef);
 
-            // Save the contact information
-            await set(newContactRef, {
-                name: name,
-                email: email,
-                phone: phone,
-                message: message,
-                submittedAt: new Date().toISOString()
-            });
+            // Save the contact information (waits up to 10 seconds)
+            await withTimeout(
+                set(newContactRef, {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                    submittedAt: new Date().toISOString()
+                }),
+                10000
+            );
+
+            // NEW: shows the unique key in the console (useful for testing)
+            console.log("Saved to Firebase with key:", newContactRef.key);
 
             // Show success message
             statusMessage.textContent =
@@ -79,14 +97,19 @@ if (contactForm && submitBtn && statusMessage) {
             console.error("Firebase error:", error);
 
             // Display useful error information
-            statusMessage.textContent =
-                "Failed to send message: " +
-                (error.code || error.message);
+            if (error.message === "timeout") {
+                statusMessage.textContent =
+                    "Sending is taking too long. Check your internet connection and try again.";
+            } else {
+                statusMessage.textContent =
+                    "Failed to send message: " +
+                    (error.code || error.message);
+            }
 
         } finally {
-            // Re-enable the button
+            // Re-enable the button and restore its original text + arrow
             submitBtn.disabled = false;
-            submitBtn.textContent = "Send Message";
+            submitBtn.innerHTML = originalButtonHTML;
         }
     });
 
